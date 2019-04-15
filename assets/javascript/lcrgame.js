@@ -8,8 +8,6 @@ console.log(gamestatus1);
 console.log(gamestatus2);
 */
 
-const player = {};
-
 const game = {
 	players		:	[],
 	over		:	false
@@ -36,6 +34,8 @@ function initializeGame(gameobj) {
 				document.onkeyup = null; // good number of players, stop listening for numbers
 				enteredPlayers = parseInt(gamestatus2.textContent);
 				console.log(enteredPlayers);
+				
+				initializePlayers(enteredPlayers);
 			}
 			else {
 				gamestatus1.textContent = "please choose a number of players from 3 to 20."; gamestatus2.textContent = "";
@@ -43,7 +43,14 @@ function initializeGame(gameobj) {
 		}
 	}
 	
-	
+	function initializePlayers(num) {
+		for (var x = 0; x < num; x++) {
+			var newPlayer = {};
+			newPlayer.chips = 10;
+			gameobj.players.push(newPlayer);
+		}
+		console.log(gameobj);
+	}
 	
 	
 }
