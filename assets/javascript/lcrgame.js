@@ -33,8 +33,8 @@ function initializeGame(gameobj) {
 			if (parseInt(gamestatus2.textContent) > 2 && parseInt(gamestatus2.textContent) < 21) {
 				document.onkeyup = null; // good number of players, stop listening for numbers
 				enteredPlayers = parseInt(gamestatus2.textContent);
-				console.log(enteredPlayers);
-				
+				gamestatus1.textContent = "";
+				gamestatus2.textContent = "";
 				initializePlayers(enteredPlayers);
 			}
 			else {
@@ -49,13 +49,13 @@ function initializeGame(gameobj) {
 			newPlayer.chips = 10;
 			gameobj.players.push(newPlayer);
 		}
-		console.log(gameobj);
 	}
 	
 	
 }
 
 function play(gameobj) {
+	console.log(gameobj);
 }
 	
 initializeGame(game);
