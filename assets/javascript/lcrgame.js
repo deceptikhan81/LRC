@@ -1,4 +1,3 @@
-
 /*
 The Rules
 https://plentifun.com/rules-to-play-left-right-center-lcr-dice-game
@@ -33,14 +32,20 @@ If you're playing with money, try not to lose too much. You can ideally play wit
 
 */
 
+// Definitions: L means pay a chip to the left  << which means decrease index, unless it decreases below zero in which case it is equal to index of final game.player
+//Similarly for right/ 
+// C means pay to the central pot
+
+// 
 const gamestatus1 = document.getElementById("gamestatus1");
 var gamestatus2 = document.getElementById("gamestatus2");
 
 const game = {
 	players		:	[],
 	over		:	false,
-	initialized	:	false
-}
+	initialized	:	false,
+	rollDice	:	function(player) { console.log(player.chips); }
+};
 
 function initialize(gameobj) {
 	var enteredPlayers = null;
@@ -79,17 +84,17 @@ function initialize(gameobj) {
 			newPlayer.chips = 3;
 			gameobj.players.push(newPlayer);
 		}
-	}
-	
-	
+	}	
 }
 
 function play(gameobj) {
 	console.log(gameobj);
-	var currentPlayer = 1;
-	gamestatus1.textContent = "Player" + currentPlayer;
+	var currentPlayer = 0;
+	gamestatus1.textContent = "Player " + currentPlayer;
 	gamestatus2.textContent = "Click the button to roll one die each of your chips.";
+	gameobj.players.forEach(function(){	gameobj.rollDice(gameobj.players[currentPlayer]); });
 }
 	
 initialize(game);
+
 var newInterv = setInterval(function(){if (game.initialized) { clearInterval(newInterv); play(game);}}, 2000);
