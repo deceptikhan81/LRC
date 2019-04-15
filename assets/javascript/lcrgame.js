@@ -31,14 +31,21 @@ function initializeGame(gameobj) {
 			}
 		}
 		if (event.which === 13) {
-			enteredPlayers = parseInt(gamestatus2.textContent);
-			console.log(enteredPlayers);
-			if (enteredPlayers > 2 && enteredPlayers < 21) { console.log("good number of players");} // good number of players
+			
+			if (parseInt(gamestatus2.textContent) > 2 && parseInt(gamestatus2.textContent) < 21) {
+				document.onkeyup = null; // good number of players, stop listening for numbers
+				enteredPlayers = parseInt(gamestatus2.textContent);
+				console.log(enteredPlayers);
+			}
 			else {
 				gamestatus1.textContent = "please choose a number of players from 3 to 20."; gamestatus2.textContent = "";
 			}
 		}
 	}
+	
+	
+	
+	
 }
 
 function play(gameobj) {
